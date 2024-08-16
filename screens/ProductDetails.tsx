@@ -5,7 +5,6 @@ import {
   StyleSheet,
   Pressable,
   FlatList,
-  useWindowDimensions,
 } from 'react-native';
 import React from 'react';
 import {ScrollView} from 'react-native';
@@ -107,7 +106,7 @@ const ProductDetails = ({navigation, route}: any) => {
           </View>
         </View>
       </ScrollView>
-      <Pressable style={styles.BottomContainer}>
+      <Pressable style={styles.BottomContainer} onPress={()=>navigation.navigate('cart')}>
         <Icon6 name="cart-shopping" size={20} color={'#ffffff'} />
         <Text style={styles.BottomContainerText}>Add To Cart | {price}</Text>
       </Pressable>
