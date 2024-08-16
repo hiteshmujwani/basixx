@@ -1,11 +1,4 @@
-import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
-  Pressable,
-  FlatList,
-} from 'react-native';
+import {View, Text, Image, StyleSheet, Pressable, FlatList} from 'react-native';
 import React from 'react';
 import {ScrollView} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -106,7 +99,9 @@ const ProductDetails = ({navigation, route}: any) => {
           </View>
         </View>
       </ScrollView>
-      <Pressable style={styles.BottomContainer} onPress={()=>navigation.navigate('cart')}>
+      <Pressable
+        style={styles.BottomContainer}
+        onPress={() => navigation.navigate('cart')}>
         <Icon6 name="cart-shopping" size={20} color={'#ffffff'} />
         <Text style={styles.BottomContainerText}>Add To Cart | {price}</Text>
       </Pressable>
