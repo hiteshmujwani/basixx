@@ -83,6 +83,8 @@ export const ProductData = [
     category: 'T-shirt',
     price: '$212.99',
     rating: '5.0',
+    product_description:'',
+    qty:0
   },
   {
     id: 2,
@@ -91,6 +93,8 @@ export const ProductData = [
     category: 'Dress modern',
     price: '$162.99',
     rating: '5.0',
+    product_description:'',
+    qty:0
   },
   {
     id: 3,
@@ -99,6 +103,8 @@ export const ProductData = [
     category: 'Dress',
     price: '$194.99',
     rating: '5.0',
+    product_description:'',
+    qty:0
   },
   {
     id: 4,
@@ -107,6 +113,8 @@ export const ProductData = [
     category: 'Dress Modern',
     price: '$122.99',
     rating: '5.0',
+    product_description:'',
+    qty:0
   },
   {
     id: 5,
@@ -115,6 +123,8 @@ export const ProductData = [
     category: 'T-shirt',
     price: '$212.99',
     rating: '5.0',
+    product_description:'',
+    qty:0
   },
   {
     id: 6,
@@ -123,6 +133,8 @@ export const ProductData = [
     category: 'Dress modern',
     price: '$162.99',
     rating: '5.0',
+    product_description:'',
+    qty:0
   },
   {
     id: 7,
@@ -131,6 +143,8 @@ export const ProductData = [
     category: 'Dress',
     price: '$194.99',
     rating: '5.0',
+    product_description:'',
+    qty:0
   },
   {
     id: 8,
@@ -139,6 +153,8 @@ export const ProductData = [
     category: 'Dress Modern',
     price: '$122.99',
     rating: '5.0',
+    product_description:'',
+    qty:0
   },
 ];
 
