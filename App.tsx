@@ -8,8 +8,9 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import {tabBarIcon} from './Shared/HomeScreenData';
 import ProductDetails from './screens/ProductDetails';
 import Cart from './screens/Cart';
+import { CartProvider } from './Context/Cart';
 
-const HomeBottomNavigation = ({navigation,route}) => {
+const HomeBottomNavigation = ({navigation,route}:any) => {
   const Tab = createBottomTabNavigator();
   console.log(route.name)
   return (
@@ -68,6 +69,7 @@ const HomeBottomNavigation = ({navigation,route}) => {
 const App = () => {
   const Stack = createNativeStackNavigator();
   return (
+    <CartProvider>
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="home" component={HomeBottomNavigation} />
@@ -75,6 +77,7 @@ const App = () => {
         <Stack.Screen name="cart" component={Cart} />
       </Stack.Navigator>
     </NavigationContainer>
+    </CartProvider>
   );
 };
 

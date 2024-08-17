@@ -84,7 +84,7 @@ export const ProductData = [
     price: '$212.99',
     rating: '5.0',
     product_description:'',
-    qty:0
+    qty:1
   },
   {
     id: 2,
@@ -94,7 +94,7 @@ export const ProductData = [
     price: '$162.99',
     rating: '5.0',
     product_description:'',
-    qty:0
+    qty:1
   },
   {
     id: 3,
@@ -104,7 +104,7 @@ export const ProductData = [
     price: '$194.99',
     rating: '5.0',
     product_description:'',
-    qty:0
+    qty:1
   },
   {
     id: 4,
@@ -114,7 +114,7 @@ export const ProductData = [
     price: '$122.99',
     rating: '5.0',
     product_description:'',
-    qty:0
+    qty:1
   },
   {
     id: 5,
@@ -134,7 +134,7 @@ export const ProductData = [
     price: '$162.99',
     rating: '5.0',
     product_description:'',
-    qty:0
+    qty:1
   },
   {
     id: 7,
@@ -144,7 +144,7 @@ export const ProductData = [
     price: '$194.99',
     rating: '5.0',
     product_description:'',
-    qty:0
+    qty:1
   },
   {
     id: 8,
@@ -154,7 +154,7 @@ export const ProductData = [
     price: '$122.99',
     rating: '5.0',
     product_description:'',
-    qty:0
+    qty:1
   },
 ];
 

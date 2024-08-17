@@ -1,13 +1,22 @@
 import {View, Text, Image, StyleSheet, Pressable, FlatList} from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import {ScrollView} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import Icon6 from 'react-native-vector-icons/FontAwesome6';
+import { useCart } from '../Context/Cart';
 
 const ProductDetails = ({navigation, route}: any) => {
+  const [cart,setCart] = useCart()
+  const [quantity,setQuantity] = useState(1)
   const {id, image, name, category, price, rating} = route.params;
+
+  const addToCartHandler = () =>{
+    setCart((prev:any)=>{
+        return [...prev,{...route.params,qty:quantity}]
+  })
+  }
   return (
     <View style={{flex: 1, backgroundColor: '#ffffff'}}>
       <ScrollView
@@ -38,11 +47,11 @@ const ProductDetails = ({navigation, route}: any) => {
               </View>
             </View>
             <View style={styles.QuantityContainer}>
-              <Pressable style={styles.QuantityBtn}>
+              <Pressable style={styles.QuantityBtn} onPress={()=> setQuantity((prev:any)=> prev - 1)}>
                 <FeatherIcon name="minus" size={20} color={'#000000'} />
               </Pressable>
-              <Text style={styles.QuantityNumber}>{1}</Text>
-              <Pressable style={styles.QuantityBtn}>
+              <Text style={styles.QuantityNumber}>{quantity}</Text>
+              <Pressable style={styles.QuantityBtn} onPress={()=>setQuantity((prev:any)=> prev + 1)}>
                 <FeatherIcon name="plus" size={20} color={'#000000'} />
               </Pressable>
             </View>
@@ -101,7 +110,7 @@ const ProductDetails = ({navigation, route}: any) => {
       </ScrollView>
       <Pressable
         style={styles.BottomContainer}
-        onPress={() => navigation.navigate('cart')}>
+        onPress={()=>{addToCartHandler(),navigation.navigate('cart')}}>
         <Icon6 name="cart-shopping" size={20} color={'#ffffff'} />
         <Text style={styles.BottomContainerText}>Add To Cart | {price}</Text>
       </Pressable>
@@ -160,7 +169,7 @@ const styles = StyleSheet.create({
     gap: 5,
   },
   ProductName: {
-    fontSize: 28,
+    fontSize: 26,
     fontWeight: '700',
     color: '#000000',
   },

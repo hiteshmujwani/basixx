@@ -4,20 +4,21 @@ import {Image} from 'react-native';
 import Entypoicons from 'react-native-vector-icons/Entypo';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 
-const CartProductCard = () => {
+const CartProductCard = ({product}:any) => {
+  console.log("from Cart Card Page ",product)
   return (
     <View style={styles.CartProductContainer}>
       <View style={styles.ImageContainer}>
         <Image
-          source={require('../Assets/Products/Product-2.png')}
+          source={product.image}
           style={styles.Image}
         />
       </View>
       <View style={styles.ProductDetailContainer}>
         <View style={styles.ProductNameCategoryMenu}>
           <View style={styles.ProductNameCategory}>
-            <Text style={styles.ProductName}>Product Name</Text>
-            <Text style={styles.ProductCategory}>Category</Text>
+            <Text style={styles.ProductName}>{product.name}</Text>
+            <Text style={styles.ProductCategory}>{product.category}</Text>
           </View>
           <Entypoicons
             name="dots-three-horizontal"
@@ -26,12 +27,12 @@ const CartProductCard = () => {
           />
         </View>
         <View style={styles.PirceQuantityContainer}>
-          <Text style={styles.ProductPrice}>$789</Text>
+          <Text style={styles.ProductPrice}>{product.price}</Text>
           <View style={styles.QuantityContainer}>
             <Pressable style={styles.QuantityBtn}>
               <FeatherIcon name="minus" size={18} color={'#000000'} />
             </Pressable>
-            <Text style={styles.QuantityNumber}>{1}</Text>
+            <Text style={styles.QuantityNumber}>{product.qty}</Text>
             <Pressable style={styles.QuantityBtn}>
               <FeatherIcon name="plus" size={18} color={'#000000'} />
             </Pressable>

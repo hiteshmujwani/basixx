@@ -8,15 +8,27 @@ import {
   Button,
   Pressable,
   FlatList,
+  RefreshControl,
 } from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {Categories, ProductData} from '../Shared/HomeScreenData';
 import ProductCard from '../Components/ProductCard';
+import { useCart } from '../Context/Cart';
 
 const HomeScreen = ({navigation}: any) => {
+  const [cart,setCart] = useCart()
+  const [refreshing, setRefreshing] = React.useState(false);
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 2000);
+  }, []);
+  console.log(cart)
   return (
-    <ScrollView>
+    <ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh}/>}>
       <View style={HomeStyle.container}>
         {/* header part  */}
         <View style={HomeStyle.header}>

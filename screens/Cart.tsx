@@ -5,18 +5,28 @@ import {
   Pressable,
   Image,
   ScrollView,
+  RefreshControl,
 } from 'react-native';
 import React from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypoicons from 'react-native-vector-icons/Entypo';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import CartProductCard from '../Components/CartProductCard';
+import { useCart } from '../Context/Cart';
 
 const Cart = ({navigation}: any) => {
+  const [cart,setCart] = useCart()
+  const [refreshing, setRefreshing] = React.useState(false);
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 2000);
+  }, []);
   return (
     <View style={styles.container}>
-      <ScrollView style={{marginBottom: 110}}>
-        <View style={styles.TopBar}>
+      <View style={styles.TopBar}>
           <Pressable
             style={styles.BackButton}
             onPress={() => navigation.goBack()}>
@@ -26,17 +36,18 @@ const Cart = ({navigation}: any) => {
             <Ionicons name="menu" size={25} color={'#000000'} />
           </Pressable>
         </View>
-        {[1, 2].map((item, index) => (
-          <>
-            <CartProductCard key={index} />
+      <ScrollView style={{flex:0,marginBottom: 110}} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh}/>}>
+        {cart && cart.map((item:any, index:number) => (
+          <View key={index}>
+            <CartProductCard product={item}/>
             <View
-              key={item}
+            
               style={{
                 borderWidth: 1,
                 borderColor: '#F6F6F6',
                 marginVertical: 20,
               }}></View>
-          </>
+          </View>
         ))}
         <View style={styles.BillingContainer}>
           <Text style={styles.BillingHeading}>Shipping Information</Text>
@@ -94,7 +105,9 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 15,
     width: '100%',
+    height:'100%',
     backgroundColor: '#ffffff',
+    display:'flex',
   },
   TopBar: {
     display: 'flex',
@@ -102,7 +115,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     width: '100%',
     paddingVertical: 10,
-    marginBottom: 20,
+    marginBottom: 0,
   },
   BackButton: {
     backgroundColor: '#ffffff',
@@ -139,7 +152,8 @@ const styles = StyleSheet.create({
   },
   BottomContainer: {
     position: 'absolute',
-    bottom: 20,
+    bottom: 30,
+    flex:0.34,
     left: 0,
     marginHorizontal: 10,
     right: 0,
